@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+  	<script src="https://rawgit.com/aframevr/aframe/b813db0614ac2b518e547105e810b5b6eccfe1c8/dist/aframe.min.js"></script>
+    <script src="https://rawgit.com/ngokevin/aframe-text-component/master/dist/aframe-text-component.min.js"></script>
+
+  </head>
+  <body>
+    <script>
+      AFRAME.registerComponent('set-sky', {
+        schema: {default: ''},
+        init() {
+          const sky = document.querySelector('a-sky');
+          this.el.addEventListener('click', () => {
+            sky.setAttribute('src', this.data);
+          });
+        }
+      });
+
+    </script>
+    <div id="div-wrapper">
+    <div class="single-div" id="vr">
+    <a-scene>
+          <a-entity position="-2.4 3 0"  text="text: point to a portal" bevelEnabled:"true" curveSegments:"100">
+            <a-animation attribute="rotation" repeat="1" to="0 -360 0"></a-animation>
+          </a-entity>
+      <a-camera position="0 1 6">
+        <a-cursor color="black" fuse="true" timeout="100"></a-cursor>
+      </a-camera>
+        <a-sphere color="#FFEB3B" radius="1" position="4 2 0" set-sky="https://c2.staticflickr.com/6/5810/31031372302_f810c3de2c_k.jpg"></a-sphere>
+        <a-sphere color="#F44336" radius="1" position="-4 2 0" set-sky="https://c2.staticflickr.com/6/5445/30987056642_7e193ff06f_k.jpg"></a-sphere>
+        <a-sphere color="#FFEB3B" radius="1" position="4 2 0" set-sky="https://c2.staticflickr.com/2/1688/25044226823_53c979f8a1_k.jpg"></a-sphere>
+        <a-sphere color="orange" radius="1" position="0 2 -2" set-roto="rotation" set-sky="https://c2.staticflickr.com/6/5329/30350171694_c165c9b945_k.jpg"></a-sphere>
+        <a-sky></a-sky>
+      </a-scene>
+      </div>
+      <div class="single-div" id="info">
+      </div>
+    </div>
+  </body>
+</html>
